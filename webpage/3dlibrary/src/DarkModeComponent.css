@@ -1,52 +1,94 @@
-.dark-mode-container {
-    background-color: #000; /* Cambiato il colore di sfondo per simularne uno nero */
-    color: #00FF00; /* Cambiato il colore del testo in verde luminoso */
-    font-family: 'Courier New', monospace; /* Cambiato il font in uno più retrò */
-    padding: 20px;
-    position: absolute; /* Posizionato in modo assoluto per centrare rispetto alla pagina */
-    top: 50%; /* Allineato in alto al 50% della pagina */
-    left: 50%; /* Allineato a sinistra al 50% della pagina */
-    transform: translate(-50%, -50%); /* Spostato di metà della larghezza e altezza del div */
-    width: 80%; /* Larghezza del div */
-    max-width: 500px; /* Larghezza massima del div per evitare di allungarsi troppo su schermi grandi */
-    border: 2px solid #00FF00; /* Aggiunto un bordo per simularne il contorno */
+
+/* Stile generale della pagina */
+@keyframes typing-animation {
+    from { width: 0; }
+    to { width: 100%; }
+}
+body {
+    font-family: Muli, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9; /* Colore di sfondo generale */
+    color: #333; /* Colore del testo */
 }
 
-.retro-filter {
-    content: '';
+/* Stile generale del tablet */
+.tablet-container {
+    width: 60vw;
+    height: 80vh; /* Modificato per rendere il tablet verticale */
+    border: 20px solid #333; /* Cornice del tablet */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombra del tablet */
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Rende il container verticale */
+    flex-direction: column; /* Imposta la direzione del contenuto come verticale */
+    justify-content: center; /* Centra il contenuto verticalmente */
+    align-items: center; /* Centra il contenuto orizzontalmente */
+}
+
+/* Stile del display retro */
+.retro-display {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://i.imgur.com/1nvg98z.png'); /* Immagine filtro retro */
-    mix-blend-mode: multiply; /* Moltiplica il colore di sfondo con l'immagine */
+    background-image: url('retro_display_texture.jpg'); /* Immagine per l'effetto vintage */
+    background-size: cover;
+    opacity: 0.7; /* Opacità per l'effetto vintage */
 }
 
+/* Stile per il testo */
+.text-content {
+    overflow-y: auto;
+    height: calc(100% - 40px); /* Altezza del testo, sottraendo lo spazio per i bottoni */
+    padding-right: 20px;
+    color: #222; /* Colore del testo */
+}
+
+/* Stili per i bottoni */
+.button-change-paragraph,
+.button-mode-switch,
+.button-voice-synthesis {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+/* Stile per il bottone cambio paragrafo */
+.button-change-paragraph {
+    margin-bottom: 20px; /* Spostamento del bottone in basso */
+}
+
+/* Stile per il bottone modalità scura */
+.button-mode-switch {
+    margin-top: 20px; /* Spostamento del bottone in alto */
+    margin-bottom: 20px; /* Spostamento del bottone in basso */
+}
+
+/* Stile per il bottone sintesi vocale */
+.button-voice-synthesis {
+    margin-top: 20px; /* Spostamento del bottone in alto */
+}
+
+/* Stile per il dark mode */
 .dark-mode {
-    color: #00FF00; /* Cambiato il colore del testo in verde luminoso */
-}
-
-.content {
-    margin-top: 20px;
-    position: relative; /* Per sovrapporre il filtro */
-    z-index: 1; /* Per posizionare il contenuto sopra il filtro */
+    background-color: #000; /* Sfondo nero */
+    color: #fff; /* Testo bianco */
 }
 
 .paragraph {
     font-size: 18px;
     line-height: 1.5;
-    font-family: Muli;
+    font-family: 'Muli', sans-serif;
+    overflow: hidden; /* Nasconde il testo che va oltre il confine del div */
+    animation: typing-animation 5s steps(100); /* Animazione del testo che sembra essere digitato */
+ /* Fa andare a capo il testo quando raggiunge la fine del div */
 }
-
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px;
-    font-family: Muli;
-    color: black
-}
-

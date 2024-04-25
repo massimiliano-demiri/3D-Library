@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import jsonData from './scraper/books.json';
- // Importa direttamente il file JSON
-import './DarkModeComponent.css'; // Stile per il componente
+import './DarkModeComponent.css';
 
 const DarkModeComponent = () => {
   const [data, setData] = useState([]);
   const [currentParagraph, setCurrentParagraph] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
+  const [isReading, setIsReading] = useState(false);
 
   useEffect(() => {
-    setData(jsonData); // Imposta i dati dal file JSON importato
+    setData(jsonData);
   }, []);
 
   const toggleDarkMode = () => {
@@ -20,9 +20,26 @@ const DarkModeComponent = () => {
     setCurrentParagraph(currentParagraph + 1);
   };
 
+  const toggleReading = () => {
+    setIsReading(!isReading);
+    if (!isReading) {
+      readText(data[currentParagraph]?.text);
+    } else {
+      window.speechSynthesis.cancel();
+    }
+  };
+
+  const readText = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(utterance);
+  };
+
   return (
     <div className={`dark-mode-container ${darkMode ? 'dark-mode' : ''}`}>
-      <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
+      <button onClick={toggleDarkMode}>Dark Mode</button>
+      <button onClick={toggleReading}>
+        {isReading ? 'Stop Reading' : 'Read Aloud'}
+      </button>
       <div className="content">
         <p className="paragraph">{data[currentParagraph]?.text}</p>
         {currentParagraph < data.length - 1 && (
