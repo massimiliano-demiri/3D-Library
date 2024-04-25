@@ -1,94 +1,160 @@
-
-/* Stile generale della pagina */
-@keyframes typing-animation {
-    from { width: 0; }
-    to { width: 100%; }
-}
-body {
-    font-family: Muli, sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9; /* Colore di sfondo generale */
-    color: #333; /* Colore del testo */
-}
-
-/* Stile generale del tablet */
-.tablet-container {
-    width: 60vw;
-    height: 80vh; /* Modificato per rendere il tablet verticale */
-    border: 20px solid #333; /* Cornice del tablet */
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombra del tablet */
-    position: relative;
-    overflow: hidden;
-    display: flex; /* Rende il container verticale */
-    flex-direction: column; /* Imposta la direzione del contenuto come verticale */
-    justify-content: center; /* Centra il contenuto verticalmente */
-    align-items: center; /* Centra il contenuto orizzontalmente */
-}
-
-/* Stile del display retro */
-.retro-display {
+.dark-mode-container {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('retro_display_texture.jpg'); /* Immagine per l'effetto vintage */
-    background-size: cover;
-    opacity: 0.7; /* Opacità per l'effetto vintage */
-}
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 80%;
+    background-color: #fff; /* Colore di sfondo bianco */
+    border-radius: 10px; /* Bordo arrotondato */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    border: 10px solid #000; /* Bordo nero per gli altri lati */
+    border-bottom-width: 70px; /* Bordo inferiore più spesso */
+  }
+  
+  .dark-mode {
+    background-color: #333; /* Colore di sfondo scuro */
+    color: #fff; /* Colore del testo bianco */
+  }
+  
+  .tablet-header {
+    height: 10%;
+    background-color: #ccc; /* Colore di sfondo grigio */
+    border-top-left-radius: 10px; /* Bordo superiore arrotondato */
+    border-top-right-radius: 10px; /* Bordo superiore arrotondato */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .tablet-status {
+    display: flex;
+    align-items: center;
+  }
+  
+  .status-icon {
+    width: 20px; /* Imposta la larghezza dell'icona */
+    height: 20px; /* Imposta l'altezza dell'icona */
+    fill: #333; /* Colore dell'icona */
+  }
+  
+  .status-item {
+    margin-right: 10px;
+  }
+  
+  .tablet-content {
+    height: 90%;
+    overflow-y: auto; /* Scroll verticale se necessario */
+  }
+  
+  .content {
+    padding: 20px; /* Spazio interno */
+    height: calc(100% - 40px); /* Altezza del contenuto calcolata */
+    overflow-y: auto; /* Scroll verticale se necessario */
+  }
+  
+  .paragraph {
+    margin-bottom: 20px; /* Spazio tra i paragrafi */
+  }
+  
+  button {
+    padding: 10px 20px; /* Padding del bottone */
+    margin-right: 10px; /* Margine destro */
+    border: none; /* Nessun bordo */
+    border-radius: 5px; /* Bordo arrotondato */
+    cursor: pointer; /* Cambio di cursore al passaggio */
+  }
+  
+  button:focus {
+    outline: none; /* Rimuovere il contorno al focus */
+  }
+  
+  /* Stile per il nome del sito */
+  .site-name {
+    position: absolute;
+    bottom: -70px; /* Spostalo al di sotto del bordo inferiore */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: #fff; /* Colore del testo bianco */
+    padding: 10px 20px; /* Padding per il nome del sito */
+    background-color: #000; /* Colore di sfondo nero */
+    border-radius: 10px; /* Bordo arrotondato */
+    font-family: Muli;
+    
+  }
+  
 
-/* Stile per il testo */
-.text-content {
-    overflow-y: auto;
-    height: calc(100% - 40px); /* Altezza del testo, sottraendo lo spazio per i bottoni */
-    padding-right: 20px;
-    color: #222; /* Colore del testo */
-}
 
-/* Stili per i bottoni */
-.button-change-paragraph,
-.button-mode-switch,
-.button-voice-synthesis {
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-}
+  /* Effetto VHS */
+  .vhs-effect::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+    animation: vhs-animation 0.5s infinite;
+  }
 
-/* Stile per il bottone cambio paragrafo */
-.button-change-paragraph {
-    margin-bottom: 20px; /* Spostamento del bottone in basso */
-}
+  @keyframes vhs-animation {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-5px, -5px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
 
-/* Stile per il bottone modalità scura */
-.button-mode-switch {
-    margin-top: 20px; /* Spostamento del bottone in alto */
-    margin-bottom: 20px; /* Spostamento del bottone in basso */
-}
-
-/* Stile per il bottone sintesi vocale */
-.button-voice-synthesis {
-    margin-top: 20px; /* Spostamento del bottone in alto */
-}
-
-/* Stile per il dark mode */
-.dark-mode {
-    background-color: #000; /* Sfondo nero */
-    color: #fff; /* Testo bianco */
-}
-
-.paragraph {
-    font-size: 18px;
-    line-height: 1.5;
-    font-family: 'Muli', sans-serif;
-    overflow: hidden; /* Nasconde il testo che va oltre il confine del div */
-    animation: typing-animation 5s steps(100); /* Animazione del testo che sembra essere digitato */
- /* Fa andare a capo il testo quando raggiunge la fine del div */
-}
+/* Aggiunta dello stile per il bottone "Rivela" */
+.typing-animation {
+    animation: typing-animation 2s steps(40, end);
+  }
+  
+  @keyframes typing-animation {
+    from {
+      width: 0;
+    }
+  }
+  
+  button.reveal-button {
+    margin: 0 auto; /* Centrare il bottone */
+  }
+  
+  /* Stile per gli icon-toggle */
+  .icon-toggle-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .dark-mode-toggle {
+    margin-right: 10px; /* Spazio tra il toggle e il bottone "Rivela" */
+  }
+  
+  .speaker-toggle {
+    margin-left: 10px; /* Spazio tra il toggle e il bottone "Rivela" */
+  }
+body{
+    /* background-image: url('./bg.jpg'); */
+  
+}  
+.navigation {
+    font-size: 14px;
+    color: #333; /* Colore del testo */
+    margin-right: 10px; /* Spazio tra la barra dell'URL e altri elementi */
+  }
+  
+  .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DCE2E6; /* Colore di sfondo della barra di navigazione */
+    padding: 5px 10px; /* Padding interno */
+    border-radius: 20px; /* Bordo arrotondato */
+    margin-top: 10px; /* Spazio sopra la barra di navigazione */
+  }
+  

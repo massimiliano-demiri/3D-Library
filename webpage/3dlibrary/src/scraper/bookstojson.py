@@ -74,10 +74,10 @@ for _ in range(5):
         doc = nlp(text[half_index:])
         sentences = [sent.text for sent in doc.sents]
 
-        # Cerca un paragrafo che ha un senso compiuto
+        # Cerca un paragrafo che ha un senso compiuto e non superi i 550 caratteri
         found_paragraph = None
         for sentence in sentences:
-            if len(sentence) > 300:  # Consideriamo un paragrafo come significativo se supera i 300 caratteri
+            if len(sentence) > 300 and len(sentence) <= 550:  # Consideriamo un paragrafo come significativo se supera i 400 e non supera i 550 caratteri
                 found_paragraph = sentence
                 break  # Esci dal ciclo dopo aver trovato il primo paragrafo significativo
 
