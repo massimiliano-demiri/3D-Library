@@ -1,4 +1,4 @@
-Project Description:
+
 3D Book Library with Random Excerpts
 
 This project aims to create a captivating 3D book library experience using Three.js, where users can immerse themselves in a virtual space and discover excerpts from various books without prior knowledge of their titles or authors. The library environment will be designed to be visually engaging and user-friendly, allowing users to navigate seamlessly through the virtual shelves.
